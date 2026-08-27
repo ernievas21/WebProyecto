@@ -1,0 +1,21 @@
+idtEstudiante,nombre,apellido,altura,peso,edad,genero,sobrepeso
+1,Ernie,Sosa,175,200,30,M,0
+2,"Carlos Daniel","Sosa Morales",175,230,30,Masculino,1
+4,"Luis Carlos",Campos,174,210,36,Masculino,1
+5,"Kevin Alfredo","Vasquez Sosa",174,210,32,Masculino,1
+6,"Mario ",Ramirez,175,210,30,Masculino,1
+7,Luis,Morales,178,210,35,Masculino,1
+8,Ernie,Sosa,175,210,30,Masculino,1
+10,MATIAS,MESSI,175,180,30,Masculino,0
+12,DYLAN,MAYEN,176,230,21,Masculino,1
+15,Erick,Osoy,170,210,30,Masculino,1
+16,"Victor Daniel","Sales Ruiz",166,210,23,Masculino,1
+17,"Gerson Enrique","Gomez Morales",170,185,23,Masculino,0
+18,Ronald,Contretas,176,160,25,Masculino,0
+19,Cristian,Lopez,175,180,22,Masculino,0
+20,"Mari de los Angeles","Carranza Del Cid",152,90,26,Femenino,0
+21,"Mario Alejandro","Guerra Avila",174,130,24,Masculino,0
+22,Karina,Sanchez,146,120,31,Femenino,0
+23,"Denzil Benjamín","Barrios Borrayo",170,240,30,Masculino,1
+24,"James Josue","De leon",172,180,36,Masculino,0
+25,"Damaris Paola","Caceres Quiñonez",168,215,32,Femenino,1
