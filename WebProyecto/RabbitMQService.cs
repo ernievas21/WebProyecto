@@ -8,6 +8,7 @@ namespace WebTarea6
     {
         // IP/Host estándar de RabbitMQ local
         private static readonly string HostName = "localhost";
+         
 
         public static void EnviarEvento(string tipoAccion, string datosJson)
         {
