@@ -15,39 +15,6 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`alumno`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`alumno` (
-  `idalumno` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `apellido` VARCHAR(45) NULL DEFAULT NULL,
-  `direccion` VARCHAR(60) NULL DEFAULT NULL,
-  `edad` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`idalumno`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 2
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`cliente`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`cliente` (
-  `idCliente` INT NOT NULL AUTO_INCREMENT,
-  `nombre` VARCHAR(45) NULL DEFAULT NULL,
-  `apellido` VARCHAR(45) NULL DEFAULT NULL,
-  `direccon` VARCHAR(45) NULL DEFAULT NULL,
-  `telefono` INT NULL DEFAULT NULL,
-  `edad` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`idCliente`))
-ENGINE = InnoDB
-AUTO_INCREMENT = 6
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`entidad_detalle`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`entidad_detalle` (
@@ -91,17 +58,70 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
+-- Table `mydb`.`tcompra`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`tcompra` (
+  `idcompra` INT NOT NULL AUTO_INCREMENT,
+  `idproveedor` INT NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `fecha` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`idcompra`),
+  INDEX `idproveedor_idx` (`idproveedor` ASC) VISIBLE,
+  CONSTRAINT `idproveedor`
+    FOREIGN KEY (`idproveedor`)
+    REFERENCES `mydb`.`proveedor` (`idProveedor`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`tpago`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`tpago` (
+  `idpago` INT NOT NULL AUTO_INCREMENT,
+  `idcompra` INT NULL DEFAULT NULL,
+  `fechaPago` DATE NULL DEFAULT NULL,
+  `monto` INT NULL DEFAULT NULL,
+  PRIMARY KEY (`idpago`),
+  INDEX `idcompra_idx` (`idcompra` ASC) VISIBLE,
+  CONSTRAINT `idcompra`
+    FOREIGN KEY (`idcompra`)
+    REFERENCES `mydb`.`tcompra` (`idcompra`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`t_historial_estado`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`t_historial_estado` (
+  `idhistorial` INT NOT NULL AUTO_INCREMENT,
+  `idpago` INT NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `fecha` DATE NULL DEFAULT NULL,
+  PRIMARY KEY (`idhistorial`),
+  INDEX `idpago_idx` (`idpago` ASC) VISIBLE,
+  CONSTRAINT `idpago`
+    FOREIGN KEY (`idpago`)
+    REFERENCES `mydb`.`tpago` (`idpago`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`t_unidad_ejecutora`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`t_unidad_ejecutora` (
-  `idunidad_ejecutora` INT NOT NULL AUTO_INCREMENT,
-  `identidad` INT NOT NULL,
-  `codigo_unidad` VARCHAR(20) NOT NULL,
-  `nombre` VARCHAR(150) NOT NULL,
-  `activo` TINYINT NULL DEFAULT '1',
-  PRIMARY KEY (`idunidad_ejecutora`),
-  INDEX `identidad` (`identidad` ASC) VISIBLE,
-  CONSTRAINT `t_unidad_ejecutora_ibfk_1`
+  `idunidadejecutora` INT NOT NULL AUTO_INCREMENT,
+  `identidad` INT NULL DEFAULT NULL,
+  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
+  `estado` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idunidadejecutora`),
+  INDEX `identidad_idx` (`identidad` ASC) VISIBLE,
+  CONSTRAINT `identidad`
     FOREIGN KEY (`identidad`)
     REFERENCES `mydb`.`t_entidad` (`identidad`))
 ENGINE = InnoDB
@@ -121,24 +141,24 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tcliente` (
   `numero_cuenta` INT NULL DEFAULT NULL,
   PRIMARY KEY (`idtcliente`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 12
+AUTO_INCREMENT = 14
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`tcompra`
+-- Table `mydb`.`tcuenta`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tcompra` (
-  `idcompra` INT NOT NULL AUTO_INCREMENT,
-  `idproveedor` INT NULL DEFAULT NULL,
-  `descripcion` VARCHAR(45) NULL DEFAULT NULL,
-  `fecha` DATE NULL DEFAULT NULL,
-  PRIMARY KEY (`idcompra`),
-  INDEX `idproveedor_idx` (`idproveedor` ASC) VISIBLE,
-  CONSTRAINT `idproveedor`
-    FOREIGN KEY (`idproveedor`)
-    REFERENCES `mydb`.`proveedor` (`idProveedor`))
+CREATE TABLE IF NOT EXISTS `mydb`.`tcuenta` (
+  `idcuenta` INT NOT NULL AUTO_INCREMENT,
+  `idtcliente` INT NULL DEFAULT NULL,
+  `banco_nombre` VARCHAR(45) NULL DEFAULT NULL,
+  `tipo_cuenta` VARCHAR(45) NULL DEFAULT NULL,
+  PRIMARY KEY (`idcuenta`),
+  INDEX `idcuenta_idx` (`idtcliente` ASC) VISIBLE,
+  CONSTRAINT `idcuenta`
+    FOREIGN KEY (`idtcliente`)
+    REFERENCES `mydb`.`tcliente` (`idtcliente`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
@@ -196,24 +216,6 @@ CREATE TABLE IF NOT EXISTS `mydb`.`tdetalle_factura` (
   CONSTRAINT `idproducto`
     FOREIGN KEY (`idproducto`)
     REFERENCES `mydb`.`tproducto` (`idproducto`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4
-COLLATE = utf8mb4_0900_ai_ci;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`tpago`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`tpago` (
-  `idpago` INT NOT NULL AUTO_INCREMENT,
-  `idcompra` INT NULL DEFAULT NULL,
-  `fechaPago` DATE NULL DEFAULT NULL,
-  `monto` INT NULL DEFAULT NULL,
-  PRIMARY KEY (`idpago`),
-  INDEX `idcompra_idx` (`idcompra` ASC) VISIBLE,
-  CONSTRAINT `idcompra`
-    FOREIGN KEY (`idcompra`)
-    REFERENCES `mydb`.`tcompra` (`idcompra`))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
