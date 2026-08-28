@@ -19,7 +19,7 @@ namespace WebTarea6
         public string apellido { get; set; }
         public string direccion { get; set; }
         public int telefono { get; set; }
-        public int edad { get; set; }
+        public int numero_cuenta { get; set; }
 
         //instanciando clases externas 
         private ConexionBBD conexion = new ConexionBBD();
@@ -52,15 +52,15 @@ namespace WebTarea6
             string srtSecuencia = string.Empty;
             
             SrtSQL = "INSERT INTO tcliente";
-            SrtSQL += " (nombre, apellido, direccion, telefono, edad)";
-            SrtSQL += "VALUES (@Pnombre, @Papellido, @Pdireccion, @Ptelefono, @Pedad)";
+            SrtSQL += " (nombre, apellido, direccion, telefono, numero_cuenta)";
+            SrtSQL += "VALUES (@Pnombre, @Papellido, @Pdireccion, @Ptelefono, @Pnumero_cuenta)";
 
             //insertar datos del objeto 
             SrtSQL = SrtSQL.Replace("@Pnombre","'"+ nombre +"'");
             SrtSQL = SrtSQL.Replace("@Papellido", "'" + apellido + "'");
             SrtSQL = SrtSQL.Replace("@Pdireccion", "'" + direccion + "'");
             SrtSQL = SrtSQL.Replace("@Ptelefono", "'" + telefono + "'");
-            SrtSQL = SrtSQL.Replace("@Pedad", "'" + edad + "'");
+            SrtSQL = SrtSQL.Replace("@Pnumero_cuenta", "'" + numero_cuenta + "'");
             
             //Ejecutar consulta 
             strResultado = conexion.EjecutarComando(SrtSQL);
@@ -122,7 +122,7 @@ namespace WebTarea6
             SrtSQL += "     apellido = @Papellido, ";
             SrtSQL += "     direccion = @Pdireccion, ";
             SrtSQL += "     telefono = @Ptelefono, ";
-            SrtSQL += "     edad = @Pedad ";
+            SrtSQL += "     numero_cuenta = @Pnumero_cuenta ";
             SrtSQL += " WHERE idtcliente = @Pidtcliente";
 
             SrtSQL = SrtSQL.Replace("@Pidtcliente", "" + idtcliente + "");
@@ -130,7 +130,7 @@ namespace WebTarea6
             SrtSQL = SrtSQL.Replace("@Papellido", "'" + apellido + "'");
             SrtSQL = SrtSQL.Replace("@Pdireccion", "'" + direccion + "'");
             SrtSQL = SrtSQL.Replace("@Ptelefono", "'" + telefono + "'");
-            SrtSQL = SrtSQL.Replace("@Pedad", "" + edad + "");
+            SrtSQL = SrtSQL.Replace("@Pnumero_cuenta", "" + numero_cuenta + "");
 
             strResultado = conexion.EjecutarComando(SrtSQL);
             return strResultado;
@@ -165,16 +165,8 @@ namespace WebTarea6
         //clase persona 
         Persona nueva_Persona = new Persona();
         
-        //mando a llamar los metodos de otra clase
-        public string DeterminarEdad ()
-        {
-            return nueva_Persona.estatusEdad(edad);
-        }
-        public string DeterminarComplexion ()
-        {
-            return nueva_Persona.ObtenerComplexion(170);
-        }
-        
+       
+       
 
         //Metodos 
         public bool agregarLCiente(int id_cliente)

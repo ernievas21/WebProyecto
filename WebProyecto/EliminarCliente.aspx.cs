@@ -25,7 +25,7 @@ namespace WebTarea6
                 txtApellido.Text = miCliente[0].apellido;
                 txtDireccion.Text = miCliente[0].direccion.ToString();
                 txttelefono.Text = miCliente[0].telefono.ToString();
-                txtEdad.Text = miCliente[0].edad.ToString();
+                txtnumero_cuenta.Text = miCliente[0].numero_cuenta.ToString();
 
             }
 
@@ -37,7 +37,7 @@ namespace WebTarea6
             txtApellido.Text = "";
             txtDireccion.Text = "";
             txttelefono.Text = "";
-            txtEdad.Text = "";
+            txtnumero_cuenta.Text = "";
 
         }
 

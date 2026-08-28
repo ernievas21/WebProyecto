@@ -28,7 +28,7 @@ namespace WebTarea6
                 txtApellido.Text = miCliente[0].apellido;
                 txtDireccion.Text = miCliente[0].direccion;
                 txtTelefono.Text = miCliente[0].telefono.ToString();
-                txtEdad.Text = miCliente[0].edad.ToString();
+                txtEdad.Text = miCliente[0].numero_cuenta.ToString();
 
             }
             
@@ -124,7 +124,7 @@ namespace WebTarea6
                 objClienteModificar.apellido = txtApellido.Text;
                 objClienteModificar.direccion = txtDireccion.Text;
                 objClienteModificar.telefono = Int32.Parse(txtTelefono.Text);
-                objClienteModificar.edad = Int32.Parse(txtEdad.Text);
+                objClienteModificar.numero_cuenta = Int32.Parse(txtEdad.Text);
 
                 //tratar de insertar
                 objClienteModificar.ModificarCliente();

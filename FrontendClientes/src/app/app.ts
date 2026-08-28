@@ -19,7 +19,7 @@ import { ClienteService } from './cliente';
           <input type="text" [(ngModel)]="clienteForm.apellido" name="apellido" placeholder="Apellido" required style="margin-right: 10px; padding: 5px;">
           <input type="text" [(ngModel)]="clienteForm.direccion" name="direccion" placeholder="Dirección" required style="margin-right: 10px; padding: 5px;">
           <input type="text" [(ngModel)]="clienteForm.telefono" name="telefono" placeholder="Teléfono" required style="margin-right: 10px; padding: 5px;">
-          <input type="number" [(ngModel)]="clienteForm.edad" name="edad" placeholder="Edad" required style="margin-right: 10px; padding: 5px; width: 70px;">
+          <input type="number" [(ngModel)]="clienteForm.numero_cuenta" name="numero_cuenta" placeholder="Numero_cuenta" required style="margin-right: 10px; padding: 5px; width: 70px;">
           
           <button type="submit" style="padding: 5px 15px; background-color: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
             Guardar
@@ -39,7 +39,7 @@ import { ClienteService } from './cliente';
             <th>Apellido</th>
             <th>Dirección</th>
             <th>Teléfono</th>
-            <th>Edad</th>
+            <th>numero_cuenta</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -50,7 +50,7 @@ import { ClienteService } from './cliente';
             <td>{{ cliente.apellido }}</td>
             <td>{{ cliente.direccion }}</td>
             <td>{{ cliente.telefono }}</td>
-            <td>{{ cliente.edad }}</td>
+            <td>{{ cliente.numero_cuenta }}</td>
             <td>
               <button (click)="seleccionarParaEditar(cliente)" style="background-color: #ffc107; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer; margin-right: 5px;">Editar</button>
               <button (click)="eliminar(cliente.idtcliente)" style="background-color: #dc3545; color: white; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer;">Eliminar</button>
@@ -73,7 +73,7 @@ export class App implements OnInit {
     apellido: '',
     direccion: '',
     telefono: '',
-    edad: null
+    numero_cuenta: null
   };
 
   constructor(private clienteService: ClienteService) { }
@@ -126,6 +126,6 @@ export class App implements OnInit {
   }
 
   limpiarFormulario() {
-    this.clienteForm = { idtcliente: 0, nombre: '', apellido: '', direccion: '', telefono: '', edad: null };
+    this.clienteForm = { idtcliente: 0, nombre: '', apellido: '', direccion: '', telefono: '', numero_cuenta: null };
   }
 }

@@ -59,7 +59,7 @@ namespace WebTarea6
                 objCliente.apellido = txtApellido.Text;
                 objCliente.direccion = txtDireccion.Text;
                 objCliente.telefono = Int32.Parse(txtTelefono.Text);
-                objCliente.edad = Int32.Parse(txtEdad.Text);
+                objCliente.numero_cuenta = Int32.Parse(txtnumero_cuenta.Text);
 
                 //tratar de insertar
                 objCliente.CrearCliente();
@@ -119,7 +119,7 @@ namespace WebTarea6
             txtDireccion.Text = "";
             txtNombre.Text = "";
             txtTelefono.Text = "";
-            txtEdad.Text = "";
+            txtnumero_cuenta.Text = "";
            // lblEdad.Text = "";
         }
 

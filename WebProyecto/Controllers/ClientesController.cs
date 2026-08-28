@@ -71,7 +71,7 @@ namespace WebTarea6
                 objeCliente.apellido = clienteData.apellido;
                 objeCliente.direccion = clienteData.direccion; // Campo nuevo
                 objeCliente.telefono = Convert.ToInt32(clienteData.telefono);   // Campo nuevo
-                objeCliente.edad = Convert.ToInt32(clienteData.edad);          // Campo nuevo
+                objeCliente.numero_cuenta = Convert.ToInt32(clienteData.numero_cuenta);          // Campo nuevo
 
                 // 3. Ejecutamos el método que ya tienes programado en Cliente.cs
                 objeCliente.ModificarCliente();

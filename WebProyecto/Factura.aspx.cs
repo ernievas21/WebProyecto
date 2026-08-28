@@ -67,7 +67,7 @@ namespace WebTarea6
             factura objfactura = new factura();
             objfactura.idfactura = int.Parse(txtcodigoFactura.Text);
             objfactura.fecha_factura = txtFecha.Text;
-            objfactura.idcliente = int.Parse(txtidCliente.Text);
+            objfactura.idtcliente = int.Parse(txtidCliente.Text);
             objfactura.serie = txtSerie.Text;
             objfactura.tipo = txtTipo.Text;
             objfactura.id_tienda = int.Parse(txtid_tienda.Text);

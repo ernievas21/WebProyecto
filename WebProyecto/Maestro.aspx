@@ -58,7 +58,7 @@
             <asp:Label ID="Label8" runat="server" Text="Edad"></asp:Label>
         &nbsp;</div>
         <div>
-        <asp:TextBox ID="txtEdad" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtnumero_cuenta" runat="server"></asp:TextBox>
              <asp:Label ID="Label9" runat="server" Text="Label" Visible="False"></asp:Label>
      </div>
 

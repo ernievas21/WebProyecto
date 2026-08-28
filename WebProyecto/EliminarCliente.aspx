@@ -67,7 +67,7 @@
                 &nbsp;     <asp:Label ID="Label7" runat="server" Text="Edad"></asp:Label>
                     &nbsp;
                 </div>
-              &nbsp;   <asp:TextBox ID="txtEdad" runat="server"></asp:TextBox>
+              &nbsp;   <asp:TextBox ID="txtnumero_cuenta" runat="server"></asp:TextBox>
                 <div>
                     <asp:Button ID="btnEliminar" runat="server" Height="50px" Text="Eliminar" OnClick="btnEliminar_Click" />
 &nbsp;     <asp:Button ID="btnRegresar" runat="server" Text="Regresar" OnClick="btnRegresar_Click" Height="50px" Width="100px" />

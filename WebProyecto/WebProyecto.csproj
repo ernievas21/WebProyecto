@@ -221,7 +221,6 @@
     <Content Include="Factura.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Eliminar.aspx" />
-    <Content Include="Ingreso_Estudiante.aspx" />
     <Content Include="ModificarAlumno.aspx" />
     <Content Include="ModificarProducto.aspx" />
     <Content Include="Modificar.aspx" />
@@ -351,13 +350,6 @@
     </Compile>
     <Compile Include="Eliminar.aspx.designer.cs">
       <DependentUpon>Eliminar.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Ingreso_Estudiante.aspx.cs">
-      <DependentUpon>Ingreso_Estudiante.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Ingreso_Estudiante.aspx.designer.cs">
-      <DependentUpon>Ingreso_Estudiante.aspx</DependentUpon>
     </Compile>
     <Compile Include="inventario.cs" />
     <Compile Include="MenuControlAcceso.aspx.cs">

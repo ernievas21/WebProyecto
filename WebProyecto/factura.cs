@@ -11,7 +11,7 @@ namespace WebTarea6
         //atributos 
         public int idfactura { get; set; }
         public string fecha_factura { get; set; }
-        public int idcliente { get; set; }
+        public int idtcliente { get; set; }
 
         public string serie { get; set; }
         public string tipo { get; set; }
@@ -77,7 +77,7 @@ namespace WebTarea6
             //insertar datos del objeto 
             SrtSQL = SrtSQL.Replace("@idfactura", "'" + idfactura + "'");
             SrtSQL = SrtSQL.Replace("@Pfecha_factura", "'" + fecha_factura + "'");
-            SrtSQL = SrtSQL.Replace("@Pidcliente", "'" + idcliente + "'");
+            SrtSQL = SrtSQL.Replace("@Pidcliente", "'" + idtcliente + "'");
             SrtSQL = SrtSQL.Replace("@Pserie", "'" + serie + "'");
             SrtSQL = SrtSQL.Replace("@Ptipo", "'" + tipo + "'");
             SrtSQL = SrtSQL.Replace("@Pid_tienda", "'" + id_tienda + "'");
