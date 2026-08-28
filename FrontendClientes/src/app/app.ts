@@ -75,6 +75,8 @@ export class App implements OnInit {
     telefono: '',
     numero_cuenta: null
   };
+  
+
 
   constructor(private clienteService: ClienteService) { }
 
@@ -88,6 +90,7 @@ export class App implements OnInit {
       error: (err) => { console.error('Error al cargar clientes:', err); }
     });
   }
+  //metodo guardar
 
    guardar() {
     if (this.clienteForm.idtcliente === 0) {

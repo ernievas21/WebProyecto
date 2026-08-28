@@ -151,8 +151,8 @@ namespace WebTarea6
             // metodos para determinar  
 
             Cliente micliente  = new Cliente();
-           string resulato= micliente.quejaCLiente('S');
-            string encuesta = resulato;
+          // string resulato= micliente.quejaCLiente('S');
+           // string encuesta = resulato;
             }
             catch (Exception)
             {
