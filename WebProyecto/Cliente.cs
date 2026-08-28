@@ -175,13 +175,7 @@ namespace WebTarea6
 
 
         }
-        public string quejaCLiente(char queja)
-        {
-            if (queja == 'S')
-                return "El cliente se quejo";
-            else
-                return "Buen Servicio";
-        }
+      
 
 
 
