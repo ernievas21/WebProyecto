@@ -23,7 +23,7 @@ namespace WebTarea6
 
 
             Cliente objcliente = new Cliente();
-            objcliente.idcliente =int.Parse(txtidCliente.Text);
+            objcliente.idtcliente =int.Parse(txtidCliente.Text);
 
             miCliente = objcliente.ConsultarCliente();
 

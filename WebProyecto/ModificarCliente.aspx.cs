@@ -18,7 +18,7 @@ namespace WebTarea6
             {
 
                 Cliente objcliente = new Cliente();
-            objcliente.idcliente = Convert.ToInt32(Request.QueryString["ID"]);
+            objcliente.idtcliente = Convert.ToInt32(Request.QueryString["ID"]);
 
             miCliente = objcliente.ConsultarCliente();
 
@@ -54,7 +54,7 @@ namespace WebTarea6
 
                 Cliente  objClienteModificar = new Cliente();
 
-                objClienteModificar.idcliente = Convert.ToInt32(Request.QueryString["ID"]);
+                objClienteModificar.idtcliente = Convert.ToInt32(Request.QueryString["ID"]);
                 objClienteModificar.nombre = txtNombre.Text;
                 objClienteModificar.apellido = txtApellido.Text;
                 objClienteModificar.direccion = txtDireccion.Text;

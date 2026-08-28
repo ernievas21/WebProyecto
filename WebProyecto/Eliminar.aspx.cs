@@ -20,7 +20,7 @@ namespace WebTarea6
             {
 
                 Cliente objcliente = new Cliente();
-                objcliente.idcliente = Convert.ToInt32(Request.QueryString["ID"]);
+                objcliente.idtcliente = Convert.ToInt32(Request.QueryString["ID"]);
 
                 miCliente = objcliente.ConsultarCliente();
 
@@ -70,7 +70,7 @@ namespace WebTarea6
             try
             {
                 Cliente objclienteEliminar = new Cliente();
-                objclienteEliminar.idcliente = Convert.ToInt32(Request.QueryString["ID"]);
+                objclienteEliminar.idtcliente = Convert.ToInt32(Request.QueryString["ID"]);
 
                 //tratar de modificarlo en la base de datos.
                 objclienteEliminar.EliminarCliente();

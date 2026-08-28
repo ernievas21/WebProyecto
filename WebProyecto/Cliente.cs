@@ -14,7 +14,7 @@ namespace WebTarea6
 
         //Si queremos usar los atriutos para el usuario hay que usar GET Y SET
 
-        public int idcliente { get; set; }
+        public int idtcliente { get; set; }
         public string nombre { get; set; }
         public string apellido { get; set; }
         public string direccion { get; set; }
@@ -81,7 +81,7 @@ namespace WebTarea6
         public List<Cliente> ConsultarClientes()
         {
             DataTable dtDatos = new DataTable();
-            SrtSQL = "SELECT * FROM tcliente";
+            SrtSQL = "SELECT * FROM mydb.tcliente";
 
             //EJECUTAR LA CONSULTA 
             dtDatos =  conexion.SeleccionarRegistrosDT(SrtSQL);
@@ -99,8 +99,8 @@ namespace WebTarea6
         public List<Cliente> ConsultarCliente()
         {
             DataTable dtDatos = new DataTable();
-            SrtSQL = "SELECT * FROM tcliente where idcliente =@Pidcliente";
-            SrtSQL = SrtSQL.Replace("@Pidcliente", "'" + idcliente +"'");
+            SrtSQL = "SELECT * FROM mydb.tcliente where idtcliente =@Pidtcliente";
+            SrtSQL = SrtSQL.Replace("@Pidtcliente", "'" + idtcliente + "'");
 
 
 
@@ -123,14 +123,14 @@ namespace WebTarea6
             SrtSQL += "     direccion = @Pdireccion, ";
             SrtSQL += "     telefono = @Ptelefono, ";
             SrtSQL += "     edad = @Pedad ";
-            SrtSQL += " WHERE idcliente = @Pidcliente ";
+            SrtSQL += " WHERE idtcliente = @Pidtcliente";
 
-            SrtSQL = SrtSQL.Replace("@Pidcliente", "'" + idcliente + "'");
+            SrtSQL = SrtSQL.Replace("@Pidtcliente", "" + idtcliente + "");
             SrtSQL = SrtSQL.Replace("@Pnombre", "'" + nombre + "'");
             SrtSQL = SrtSQL.Replace("@Papellido", "'" + apellido + "'");
             SrtSQL = SrtSQL.Replace("@Pdireccion", "'" + direccion + "'");
             SrtSQL = SrtSQL.Replace("@Ptelefono", "'" + telefono + "'");
-            SrtSQL = SrtSQL.Replace("@Pedad", "'" + edad + "'");
+            SrtSQL = SrtSQL.Replace("@Pedad", "" + edad + "");
 
             strResultado = conexion.EjecutarComando(SrtSQL);
             return strResultado;
@@ -144,9 +144,9 @@ namespace WebTarea6
         public string EliminarCliente()
         {
             SrtSQL = " DELETE FROM tcliente";
-            SrtSQL += " WHERE idcliente = @Pidcliente ";
+            SrtSQL += " WHERE idtcliente = @Pidtcliente ";
 
-            SrtSQL = SrtSQL.Replace("@Pidcliente", "'" + idcliente + "'");
+            SrtSQL = SrtSQL.Replace("@Pidtcliente", "'" + idtcliente + "'");
 
             //Ejecutar consulta
             strResultado = conexion.EjecutarComando(SrtSQL);

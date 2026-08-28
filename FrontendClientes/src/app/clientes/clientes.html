@@ -1,0 +1,51 @@
+<div style="padding: 20px; font-family: Arial, sans-serif;">
+  <h2>Gestión de Clientes (Prueba Técnica)</h2>
+
+  <!-- Formulario para Insertar / Modificar -->
+  <fieldset style="margin-bottom: 20px; padding: 15px; border-radius: 5px; border: 1px solid #ccc;">
+    <legend><strong>{{ clienteForm.idcliente === 0 ? 'Insertar Cliente' : 'Modificar Cliente' }}</strong></legend>
+    <form (ngSubmit)="guardar()">
+  <input type="text" [(ngModel)]="clienteForm.nombre" name="nombre" placeholder="Nombre" required style="margin-right: 10px; padding: 5px;">
+  <input type="text" [(ngModel)]="clienteForm.apellido" name="apellido" placeholder="Apellido" required style="margin-right: 10px; padding: 5px;">
+  <input type="text" [(ngModel)]="clienteForm.direccion" name="direccion" placeholder="Dirección" required style="margin-right: 10px; padding: 5px;">
+  <input type="text" [(ngModel)]="clienteForm.telefono" name="telefono" placeholder="Teléfono" required style="margin-right: 10px; padding: 5px;">
+  <input type="number" [(ngModel)]="clienteForm.edad" name="edad" placeholder="Edad" required style="margin-right: 10px; padding: 5px; width: 70px;">
+
+  <button type="submit" style="padding: 5px 15px; background-color: #28a745; color: white; border: none; border-radius: 3px; cursor: pointer;">
+    Guardar
+  </button>
+  <button type="button" *ngIf="clienteForm.idtcliente !== 0" (click)="limpiarFormulario()" style="margin-left: 5px; padding: 5px 10px;">
+    Cancelar
+  </button>
+</form>
+  </fieldset>
+
+  <!-- Tabla que muestra tus registros desde C# -->
+  <table border="1" cellpadding="8" style="width: 100%; border-collapse: collapse; text-align: left;">
+    <thead style="background-color: #f2f2f2;">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Dirección</th>
+    <th>Teléfono</th>
+    <th>Edad</th>
+    <th>Acciones</th>
+  </tr>
+</thead>
+    <tbody>
+      <<tr *ngFor="let cliente of listaClientes">
+  <td>{{ cliente.idtcliente }}</td> <!-- <-- Cambiado a idtcliente -->
+  <td>{{ cliente.nombre }}</td>
+  <td>{{ cliente.apellido }}</td>
+  <td>{{ cliente.direccion }}</td>
+  <td>{{ cliente.telefono }}</td>
+  <td>{{ cliente.edad }}</td>
+  <td>
+    <button (click)="seleccionarParaEditar(cliente)" style="background-color: #ffc107; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer; margin-right: 5px;">Editar</button>
+    <button (click)="eliminar(cliente.idtcliente)" style="background-color: #dc3545; color: white; border: none; padding: 3px 8px; border-radius: 3px; cursor: pointer;">Eliminar</button>
+  </td>
+</tr>
+    </tbody>
+  </table>
+</div>

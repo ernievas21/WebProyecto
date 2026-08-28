@@ -61,11 +61,25 @@ namespace WebTarea6
 
             try
             {
-                clienteData.ModificarCliente(); // Reemplaza por tu método real de actualizar
+                // 1. Instanciamos tu clase de lógica tradicional
+                Cliente objeCliente = new Cliente();
 
+                // 2. Le inyectamos TODOS los campos que nos mandó Angular
+                // NOTA: Asegúrate de que los nombres en minúscula coincidan con tu base de datos
+                objeCliente.idtcliente = clienteData.idtcliente; // Vincula tu variable ID global de C#
+                objeCliente.nombre = clienteData.nombre;
+                objeCliente.apellido = clienteData.apellido;
+                objeCliente.direccion = clienteData.direccion; // Campo nuevo
+                objeCliente.telefono = Convert.ToInt32(clienteData.telefono);   // Campo nuevo
+                objeCliente.edad = Convert.ToInt32(clienteData.edad);          // Campo nuevo
+
+                // 3. Ejecutamos el método que ya tienes programado en Cliente.cs
+                objeCliente.ModificarCliente();
+
+                // 4. Reportamos el evento correspondiente a RabbitMQ
                 var serializer = new System.Web.Script.Serialization.JavaScriptSerializer();
                 string jsonCliente = serializer.Serialize(clienteData);
-
+                
                 RabbitMQService.EnviarEvento("CLIENTE_MODIFICADO", jsonCliente);
 
                 return Ok(new { mensaje = "Cliente modificado correctamente" });
@@ -87,7 +101,7 @@ namespace WebTarea6
                 Cliente objeCliente = new Cliente();
 
                 // 2. Le inyectamos el ID que viene desde la URL de Angular
-                objeCliente.idcliente = id;
+                objeCliente.idtcliente = id;
 
                 // 3. Ejecutamos el método que acabamos de ver en tu pantalla
                 objeCliente.EliminarCliente();
